@@ -1,5 +1,6 @@
 import logo from '../logo.svg';
-import React from 'react'
+import React from 'react';
+import CartWidget from './cartWidget';
 
 function NavBar() {
   return (
@@ -15,6 +16,9 @@ function NavBar() {
                 </li>
                 <li className='navbar-item'>
                     <a href='/profile'>Profile</a>
+                </li>
+                <li className='navbar-item'>
+                    <CartWidget/>
                 </li>
             </ul>
         </nav>
