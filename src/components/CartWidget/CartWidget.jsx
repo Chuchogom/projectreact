@@ -1,5 +1,5 @@
 import React from 'react';
-import cart from '../shopping-cart.svg';
+import cart from '../../shopping-cart.svg';
 
 function CartWidget() {
   return (
