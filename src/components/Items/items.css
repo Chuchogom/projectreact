@@ -1,0 +1,13 @@
+.items__container{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.items__container img{
+    border-radius: 20px;
+    width: 350px;
+    height: auto;
+}
