@@ -8,10 +8,6 @@ const movies = [
 
 
 
-
-
-
-
 export const ItemListContainer = () => {
   
   
@@ -26,7 +22,7 @@ export const ItemListContainer = () => {
     });
     getData.then(res => setData(res));
 
-  },[])
+  },[ ])
 
 
 
