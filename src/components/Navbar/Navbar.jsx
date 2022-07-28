@@ -1,6 +1,7 @@
 import logo from '../../logo.svg';
 import React from 'react';
 import CartWidget from '../CartWidget/CartWidget';
+import {NavLink} from 'react-router-dom';
 
 function NavBar() {
   return (
@@ -9,16 +10,21 @@ function NavBar() {
         <h1 className='navbar-title'> <img src={logo} className="App-logo" alt="logo" /> Cinema App </h1>
             <ul className='navbar-list'>
                 <li className='navbar-item'>
-                    <a href='/home'>Home</a>
+                    <NavLink to='/'>Home</NavLink>
                 </li>
                 <li className='navbar-item'>
-                    <a href='/movies'>Movies</a>
+                    <NavLink to='/movies'>Movies</NavLink>
                 </li>
                 <li className='navbar-item'>
-                    <a href='/profile'>Profile</a>
+                    <NavLink to='/series'>Series</NavLink>
                 </li>
                 <li className='navbar-item'>
-                    <CartWidget/>
+                    <NavLink to='/profile'>Profile</NavLink>
+                </li>
+                <li className='navbar-item'>
+                    <NavLink className='navbar-item' to='cart'>
+                        <CartWidget/>
+                    </NavLink>
                 </li>
             </ul>
         </nav>
