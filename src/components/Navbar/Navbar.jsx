@@ -1,35 +1,71 @@
 import logo from '../../logo.svg';
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import CartWidget from '../CartWidget/CartWidget';
-import {NavLink} from 'react-router-dom';
+import Menu from '../Menu/Menu';
+import MyOrder from '../../containers/MyOrder/MyOrder'
+import { NavLink } from 'react-router-dom';
+import AppContext from '../../context/AppContext';
+import './NavBar.css'
 
-function NavBar() {
-  return (
-    <div>
-        <nav className='navbar'>
-        <h1 className='navbar-title'> <img src={logo} className="App-logo" alt="logo" /> Cinema App </h1>
-            <ul className='navbar-list'>
-                <li className='navbar-item'>
-                    <NavLink to='/'>Home</NavLink>
-                </li>
-                <li className='navbar-item'>
-                    <NavLink to='/movies'>Movies</NavLink>
-                </li>
-                <li className='navbar-item'>
-                    <NavLink to='/series'>Series</NavLink>
-                </li>
-                <li className='navbar-item'>
-                    <NavLink to='/profile'>Profile</NavLink>
-                </li>
-                <li className='navbar-item'>
-                    <NavLink className='navbar-item' to='cart'>
-                        <CartWidget/>
-                    </NavLink>
-                </li>
-            </ul>
-        </nav>
-    </div>
-  )
+const NavBar = () => {
+    const [toggle, setToggle] = useState(false);
+    const [toggleOrders, setToggleOrders] = useState(false);
+    const { state: { cart } } = useContext(AppContext);
+
+    const handleToggle = () => {
+        setToggle(!toggle)
+    }
+    return (
+        <div>
+            <nav className='navbar'>
+                <h1 className='navbar-title'> <img src={logo} className="App-logo" alt="logo" /> YouShop </h1>
+                <div className="navbar-left">
+                    <ul className='navbar-list'>
+                        <li >
+                            <NavLink to='/'>
+                                All
+                            </NavLink>
+                        </li>
+                        <li >
+                            <NavLink to='/'>
+                                Clothes
+                            </NavLink>
+                        </li>
+                        <li >
+                            <NavLink to='/'>
+                                Electronics
+                            </NavLink>
+                        </li>
+                        <li >
+                            <NavLink to='/'>
+                                Toys
+                            </NavLink>
+                        </li>
+                        <li >
+                            <NavLink to='/'>
+                                Others
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
+                <div className="navbar-right">
+                    <ul>
+                    <li className="navbar-email" onClick={handleToggle}>
+						email@gmail.com
+					</li>
+                        <li className='navbar-shopping-cart' onClick={() => setToggleOrders(!toggleOrders)}>
+                            <NavLink to='cart'>
+                                <CartWidget/>
+                                {cart.length > 0 ? <div>{cart.length}</div> : null}
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>                
+                {toggle && <Menu />}
+                {toggleOrders && <MyOrder />}
+            </nav>
+        </div>
+    )
 }
 
 export default NavBar;

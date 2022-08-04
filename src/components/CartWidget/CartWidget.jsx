@@ -3,7 +3,7 @@ import cart from '../../shopping-cart.svg';
 
 function CartWidget() {
   return (
-    <img src={cart} className="Cart-logo" alt="logo" />
+    <img src={cart} className="navbar-shopping-cart" alt="shopping cart" />
   )
 }
 
